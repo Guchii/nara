@@ -1,34 +1,16 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# 🔐 Nara Link Locker
 
-## Getting Started
+## About
 
-First, run the development server:
+Nara is a minimalistic link locker web application. It password protects your link with the **Rijndael** encryption algorithm. You can share the link with anyone in the world safely.
 
-```bash
-npm run dev
-# or
-yarn dev
-```
+## Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- minimalistic w/ no ads
+- completely serverless (data is stored in the url)
+- super fast
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Examples
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+- github.com - <a href="https://narall.surge.sh/locked?enc=U2FsdGVkX1%2BFYC9w%2B%2BEyx%2FuU1E8DNYe%2BSMzAxv9VqEmFfuXCNAbOUqVK3d6b5jHu">here</a> - password: 123
+- youtube.com - <a href="https://narall.surge.sh/locked?enc=U2FsdGVkX18Ws7TaZxvJYjcxlfDad44bgas1NCHCmYRKEKgnfEAi%2FHh65Shjtwdw">here</a> - password: 123
