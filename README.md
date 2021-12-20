@@ -2,7 +2,7 @@
 
 ## About
 
-Nara is a minimalistic link locker web application. It password protects your link with the **Rijndael** encryption algorithm. You can share the link with anyone in the world safely.
+Nara is a minimalistic link locker web application. It password protects your link with the **Rijndael** encryption algorithm. You can share this link with anyone in the world safely.
 
 ## Features
 
