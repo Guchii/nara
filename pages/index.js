@@ -1,24 +1,30 @@
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { AES, enc } from "crypto-js";
-import { useRef, useState } from "react";
+import { AES } from "crypto-js";
+import { useState } from "react";
 
 export default function Home() {
   const [link, setLink] = useState(null);
   const [pass, setPass] = useState(null);
-  const [encrypted, setEncrypted] = useState(null);
   const router = useRouter();
   const handler = () => {
     router.push({
-      pathname: "/decrypt",
+      pathname: "/locked",
       query: {
-        enc: encodeURIComponent(AES.encrypt(link, pass).toString())
+        enc: encodeURIComponent(AES.encrypt(link, pass).toString()),
+        ref: "index"
       }
     });
   };
   return (
     <>
-      <div></div>
+      <Head>
+        <title>Password Protect your Links with Nara</title>
+        <meta
+          name="description"
+          content="Enter your Link and Password in their respective fields, then press Enter."
+        />
+      </Head>
       <section className="flex flex-col justify-center items-center gap-10">
         <div className="text-center">
           <h2 className="font-bold text-4xl">
@@ -42,7 +48,7 @@ export default function Home() {
             onChange={(e) => setPass(e.target.value)}
             value={pass}
             className="bg-slate-500 text-white rounded-full p-3 placeholder:text-white duration-150 indent-2"
-            placeholder="🔒 Enter your password ⏎"
+            placeholder="🔑 Enter password ⏎"
             onKeyPress={(e) => {
               e.key === "Enter" && handler();
             }}
