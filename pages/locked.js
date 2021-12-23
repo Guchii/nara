@@ -4,9 +4,10 @@ import { AES, enc } from "crypto-js";
 import { useEffect, useState } from "react";
 import copy from "clipboard-copy";
 
-export default function Home() {
+const Locked = () => {
   const [pass, setPass] = useState(null);
   const [encrypted, setEncrypted] = useState(null);
+  const [fetched, setFetched] = useState(false);
   const router = useRouter();
   useEffect(() => {
     setEncrypted(decodeURIComponent(router.query.enc));
@@ -14,6 +15,14 @@ export default function Home() {
   const handler = () => {
     const final = AES.decrypt(encrypted, pass).toString(enc.Utf8);
     window.open(final, "_self");
+  };
+  const shortner = async (url) => {
+    const res = await fetch(`https://api.shrtco.de/v2/shorten?url=${url}`);
+    const { result } = await res.json();
+    const { full_short_link } = result;
+    copy(full_short_link);
+    setFetched(true);
+    setTimeout(() => setFetched(false), 3000);
   };
   return (
     <>
@@ -56,14 +65,33 @@ export default function Home() {
             </button>
             <p>&lt; copy link &gt;</p>
             <button
-              className="bg-gray-500 p-3 text-gray-100 rounded-full"
-              disabled
+              className="bg-purple-500 p-3 text-white rounded-full"
+              onClick={() => {
+                const url = new URL(window.location);
+                shortner(
+                  location.protocol +
+                    "//" +
+                    (location.host === "localhost:3000"
+                      ? "narall.surge.sh"
+                      : location.host) +
+                    location.pathname +
+                    "?enc=" +
+                    url.searchParams.get("enc")
+                );
+              }}
             >
               short
             </button>
           </div>
         )}
+        {fetched && (
+          <span>
+            🔗 Link fetched from the shrtco.de api and copied to 📋 clipboard.
+          </span>
+        )}
       </div>
     </>
   );
-}
+};
+
+export default Locked;
